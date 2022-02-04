@@ -1,0 +1,30 @@
+@model webapp.ViewModels.LoginViewModel;
+
+@{
+    Layout = "_AuthLayout";
+}
+
+<form class="form-signin" method="post" asp-action="Login" asp-controller="Account">
+    <input type="text" hidden="true" asp-for="@Model.ReturnUrl">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="~/logo.svg" alt="" width="72"
+            height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Ilmhub IT School</h1>
+    </div>
+
+    <div class="form-label-group">
+        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label class="text-muted" asp-for="Email" for="inputEmail"></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-label-group">
+        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <label class="text-muted" asp-for="Password" for=""></label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block pos" type="submit">Sign in</button>
+    <p>No accounts? <a rel="stylesheet" asp-action="Signup" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl">Register</a></p>
+    <p class="mt-5 mb-3 text-muted text-center">© @DateTimeOffset.Now.Year</p>
+</form>
